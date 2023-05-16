@@ -1,45 +1,55 @@
-import {Text,  FlatList, StyleSheet, View, SectionList} from 'react-native' ;
+import {Text, StyleSheet, View, SectionList} from 'react-native' ;
 import React from 'react';
 
 const ItemsToDisplay = [
     {
-        title: 'Appetizers',
-        data: [
-          'Hummus',
-          'Moutabal',
-          'Falafel',
-          'Marinated Olives',
-          'Kofta',
-          'Eggplant Salad',
-        ],
-      },
-      {
-        title: 'Main Dishes',
-        data: ['Lentil Burger', 'Smoked Salmon', 'Kofta Burger', 'Turkish Kebab'],
-      },
-      {
-        title: 'Sides',
-        data: [
-          'Fries',
-          'Buttered Rice',
-          'Bread Sticks',
-          'Pita Pocket',
-          'Lentil Soup',
-          'Greek Salad',
-          'Rice Pilaf',
-        ],
-      },
-      {
-        title: 'Desserts',
-        data: ['Baklava', 'Tartufo', 'Tiramisu', 'Panna Cotta'],
-      },
+      title: 'Appetizers',
+      data: [
+        { name: 'Hummus', price: '$5.00' },
+        { name: 'Moutabal', price: '$5.00' },
+        { name: 'Falafel', price: '$7.50' },
+        { name: 'Marinated Olives', price: '$5.00' },
+        { name: 'Kofta', price: '$5.00' },
+        { name: 'Eggplant Salad', price: '$8.50' },
+      ],
+    },
+    {
+      title: 'Main Dishes',
+      data: [
+        { name: 'Lentil Burger', price: '$10.00' },
+        { name: 'Smoked Salmon', price: '$14.00' },
+        { name: 'Kofta Burger', price: '$11.00' },
+        { name: 'Turkish Kebab', price: '$15.50' },
+      ],
+    },
+    {
+      title: 'Sides',
+      data: [
+        { name: 'Fries', price: '$3.00', id: '11K' },
+        { name: 'Buttered Rice', price: '$3.00' },
+        { name: 'Bread Sticks', price: '$3.00' },
+        { name: 'Pita Pocket', price: '$3.00' },
+        { name: 'Lentil Soup', price: '$3.75' },
+        { name: 'Greek Salad', price: '$6.00' },
+        { name: 'Rice Pilaf', price: '$4.00' },
+      ],
+    },
+    {
+      title: 'Desserts',
+      data: [
+        { name: 'Baklava', price: '$3.00' },
+        { name: 'Tartufo', price: '$3.00' },
+        { name: 'Tiramisu', price: '$5.00' },
+        { name: 'Panna Cotta', price: '$5.00' },
+      ],
+    },
 ];
 
-const Item = ({name})  => {
+const Item = ({name, price})  => {
     return (
     <View style={MenuItemStyle.innerContainer}> 
         <Text style={MenuItemStyle.ItemText}>{name}</Text>
-        
+        <Text style={MenuItemStyle.ItemText}>{price}</Text>
     </View>
     )
 };
@@ -56,7 +66,7 @@ function MenuItems() {
                 <SectionList
                 sections={ItemsToDisplay}
                 keyExtractor={(item,index) => item+index}
-                renderItem={({item}) => <Item name={item} />}
+                renderItem={({item}) => <Item name={item.name} price={item.price} />}
                 ListHeaderComponent={header}
                 renderSectionHeader={sectionHeader}
                 ItemSeparatorComponent={separator}
@@ -80,6 +90,8 @@ const MenuItemStyle = StyleSheet.create({
         paddingHorizontal: 40,
         paddingVertical: 20,
         backgroundColor: 'gray',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
         
     },
     ItemText: {
@@ -92,7 +104,8 @@ const MenuItemStyle = StyleSheet.create({
     },
     sectionHeader : {
         fontSize: 25,
-        backgroundColor: '#EDEFEE'
+        backgroundColor: '#EDEFEE',
+        textAlign: 'center'
     }
 
 
