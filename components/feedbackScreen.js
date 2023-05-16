@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput , ScrollView, Text , StyleSheet} from 'react-native';
+import { TextInput , ScrollView, Text , StyleSheet , KeyboardAvoidingView , Platform} from 'react-native';
 
 function FeedbackScreen() {
     const [firstName , onChangeFirstName] = useState('');
@@ -7,7 +7,8 @@ function FeedbackScreen() {
     const [message, onChangeMessage] =useState('');
 
     return (
-        <ScrollView style={FeedbackStyle.container}>
+        <KeyboardAvoidingView style={FeedbackStyle.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} >
+        <ScrollView  keyboardDismissMode='on-drag'>
             <Text style={FeedbackStyle.headingText}> How was your visit to Little Lemon? </Text>
             <Text style={FeedbackStyle.paraText}>
             Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual environment. We would love to hear your experience with us!
@@ -23,7 +24,7 @@ function FeedbackScreen() {
             value={message}
             onChangeText={onChangeMessage} />
         </ScrollView>
-
+        </KeyboardAvoidingView>
     );
 }
 
