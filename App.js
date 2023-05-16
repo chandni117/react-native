@@ -7,12 +7,8 @@ export default function App() {
   return (<>
     <View style= {styles.container}>
       <StatusBar />
-      <LemonHeader />
-      <WelcomeScreen />
+      <MenuItems />
     </View>
-    
-    
-    
     <View style={styles.footerStyle}>
       <LemonFooter/> 
     </View>
@@ -23,7 +19,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'grey'
+    backgroundColor: 'black'
   },
   footerStyle: {
     backgroundColor: 'grey'
