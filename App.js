@@ -3,12 +3,13 @@ import LemonHeader from './components/LemonHeader';
 import LemonFooter from './components/LemonFooter';
 import WelcomeScreen from './components/WelcomeScreen';
 import MenuItems from './components/MenuItems';
+import FeedbackScreen from './components/feedbackScreen';
 export default function App() {
   return (<>
     <View style= {styles.container}>
       <StatusBar />
       <LemonHeader />
-      <MenuItems />
+      <WelcomeScreen />
     </View>
     <View style={styles.footerStyle}>
       <LemonFooter/> 
