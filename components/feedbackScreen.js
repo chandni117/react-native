@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput , ScrollView, Text , StyleSheet , KeyboardAvoidingView , Platform} from 'react-native';
+import { TextInput , ScrollView, Text , StyleSheet , KeyboardAvoidingView , Platform, Alert} from 'react-native';
 
 function FeedbackScreen() {
     const [firstName , onChangeFirstName] = useState('');
@@ -16,7 +16,9 @@ function FeedbackScreen() {
             <TextInput 
             style={FeedbackStyle.inputStyle}
             value={firstName}
-            onChangeText={onChangeFirstName} />
+            onChangeText={onChangeFirstName} 
+            onFocus={() => Alert.alert('firstName is now focused')}
+            onBlur={() => Alert.alert('firstName is now blurred')}/>
             <TextInput style={FeedbackStyle.inputStyle}
             value={lastName}
             onChangeText={onChangeLastName} />
