@@ -1,88 +1,100 @@
-import {Text,  FlatList, StyleSheet, View} from 'react-native' ;
+import {Text,  FlatList, StyleSheet, View, SectionList} from 'react-native' ;
 import React from 'react';
 
 const ItemsToDisplay = [
-    { name: 'Hummus', price: '$5.00', id: '1A' },
-    { name: 'Moutabal', price: '$5.00', id: '2B' },
-    { name: 'Falafel', price: '$7.50', id: '3C' },
-    { name: 'Marinated Olives', price: '$5.00', id: '4D' },
-    { name: 'Kofta', price: '$5.00', id: '5E' },
-    { name: 'Eggplant Salad', price: '$8.50', id: '6F' },
-    { name: 'Lentil Burger', price: '$10.00', id: '7G' },
-    { name: 'Smoked Salmon', price: '$14.00', id: '8H' },
-    { name: 'Kofta Burger', price: '$11.00', id: '9I' },
-    { name: 'Turkish Kebab', price: '$15.50', id: '10J' },
-    { name: 'Fries', price: '$3.00', id: '11K' },
-    { name: 'Buttered Rice', price: '$3.00', id: '12L' },
-    { name: 'Bread Sticks', price: '$3.00', id: '13M' },
-    { name: 'Pita Pocket', price: '$3.00', id: '14N' },
-    { name: 'Lentil Soup', price: '$3.75', id: '15O' },
-    { name: 'Greek Salad', price: '$6.00', id: '16Q' },
-    { name: 'Rice Pilaf', price: '$4.00', id: '17R' },
-    { name: 'Baklava', price: '$3.00', id: '18S' },
-    { name: 'Tartufo', price: '$3.00', id: '19T' },
-    { name: 'Tiramisu', price: '$5.00', id: '20U' },
-    { name: 'Panna Cotta', price: '$5.00', id: '21V' },
+    {
+        title: 'Appetizers',
+        data: [
+          'Hummus',
+          'Moutabal',
+          'Falafel',
+          'Marinated Olives',
+          'Kofta',
+          'Eggplant Salad',
+        ],
+      },
+      {
+        title: 'Main Dishes',
+        data: ['Lentil Burger', 'Smoked Salmon', 'Kofta Burger', 'Turkish Kebab'],
+      },
+      {
+        title: 'Sides',
+        data: [
+          'Fries',
+          'Buttered Rice',
+          'Bread Sticks',
+          'Pita Pocket',
+          'Lentil Soup',
+          'Greek Salad',
+          'Rice Pilaf',
+        ],
+      },
+      {
+        title: 'Desserts',
+        data: ['Baklava', 'Tartufo', 'Tiramisu', 'Panna Cotta'],
+      },
 ];
 
-const Item = ({name, price})  => {
+const Item = ({name})  => {
     return (
     <View style={MenuItemStyle.innerContainer}> 
         <Text style={MenuItemStyle.ItemText}>{name}</Text>
-        <Text style={MenuItemStyle.ItemText}>{price}</Text>
         
     </View>
     )
 };
 
 const header = () => <Text style={MenuItemStyle.headText}>View Menu</Text>
-const Separator = () => <View style={MenuItemStyle.separator}/>
-
+const separator = () => <View style={MenuItemStyle.Separator}></View>
+const sectionHeader = ({section: {title}}) => <Text style={MenuItemStyle.sectionHeader}>{title}</Text>
 function MenuItems() {
-    const renderItem = ({item}) => {
-        <Item name={item.name}  price={item.price}/>
-    }
     
     return (
         
         <View style={MenuItemStyle.container}>
                 
-                <FlatList 
-                data={ItemsToDisplay}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => <Item name={item.name} price={item.price} />}
+                <SectionList
+                sections={ItemsToDisplay}
+                keyExtractor={(item,index) => item+index}
+                renderItem={({item}) => <Item name={item} />}
                 ListHeaderComponent={header}
-                ItemSeparatorComponent={Separator} /> 
+                renderSectionHeader={sectionHeader}
+                ItemSeparatorComponent={separator}
+                /> 
         </View>
     );
 };
 
 const MenuItemStyle = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0.95,
     },
     headText: {
-        fontSize: 40,
+        fontSize: 34,
         fontWeight: 'bold',
         flexWrap: 'wrap',
         color: '#F4CE14',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     innerContainer: {
         paddingHorizontal: 40,
         paddingVertical: 20,
         backgroundColor: 'gray',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+        
     },
     ItemText: {
         fontSize: 20,
         color: 'white'
     },
-    separator: {
+    Separator: {
         borderBottomWidth: 1,
-        backgroundColor: 'white'
+        backgroundColor: '#EDEFEE'
+    },
+    sectionHeader : {
+        fontSize: 25,
+        backgroundColor: '#EDEFEE'
     }
+
 
 });
 
