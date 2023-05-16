@@ -7,6 +7,7 @@ export default function App() {
   return (<>
     <View style= {styles.container}>
       <StatusBar />
+      <LemonHeader />
       <MenuItems />
     </View>
     <View style={styles.footerStyle}>
@@ -19,10 +20,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: '#333333'
   },
   footerStyle: {
-    backgroundColor: 'grey'
+    backgroundColor: '#333333'
   }
  
 })

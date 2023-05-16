@@ -10,10 +10,10 @@ export default function LemonHeader() {
 const LemonHeaderStyle = StyleSheet.create({
   container: {
     flex: 0.13,
-    backgroundColor: 'black',
+    backgroundColor: 'gray',
   },
   headerText: {
-    color: 'yellow',
+    color: '#333333',
     textAlign: 'center',
     fontSize: 30,
     padding: 20,

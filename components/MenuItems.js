@@ -2,53 +2,57 @@ import {Text,  FlatList, StyleSheet, View} from 'react-native' ;
 import React from 'react';
 
 const ItemsToDisplay = [
-  { title: 'Hummus', id: '1A' },
-  { title: 'Moutabal', id: '2B' },
-  { title: 'Falafel', id: '3C' },
-  { title: 'Marinated Olives', id: '4D' },
-  { title: 'Kofta', id: '5E' },
-  { title: 'Eggplant Salad', id: '6F' },
-  { title: 'Lentil Burger', id: '7G' },
-  { title: 'Smoked Salmon', id: '8H' },
-  { title: 'Kofta Burger', id: '9I' },
-  { title: 'Turkish Kebab', id: '10J' },
-  { title: 'Fries', id: '11K' },	
-  { title: 'Buttered Rice', id: '12L' },
-  { title: 'Bread Sticks', id: '13M' },
-  { title: 'Pita Pocket', id: '14N' },
-  { title: 'Lentil Soup', id: '15O' },
-  { title: 'Greek Salad', id: '16Q' },
-  { title: 'Rice Pilaf', id: '17R' },
-  { title: 'Baklava', id: '18S' },
-  { title: 'Tartufo', id: '19T' },
-  { title: 'Tartufo', id: '20U' },
-  { title: 'Tiramisu', id: '21V' },
-  { title: 'Panna Cotta', id: '22W' },
+    { name: 'Hummus', price: '$5.00', id: '1A' },
+    { name: 'Moutabal', price: '$5.00', id: '2B' },
+    { name: 'Falafel', price: '$7.50', id: '3C' },
+    { name: 'Marinated Olives', price: '$5.00', id: '4D' },
+    { name: 'Kofta', price: '$5.00', id: '5E' },
+    { name: 'Eggplant Salad', price: '$8.50', id: '6F' },
+    { name: 'Lentil Burger', price: '$10.00', id: '7G' },
+    { name: 'Smoked Salmon', price: '$14.00', id: '8H' },
+    { name: 'Kofta Burger', price: '$11.00', id: '9I' },
+    { name: 'Turkish Kebab', price: '$15.50', id: '10J' },
+    { name: 'Fries', price: '$3.00', id: '11K' },
+    { name: 'Buttered Rice', price: '$3.00', id: '12L' },
+    { name: 'Bread Sticks', price: '$3.00', id: '13M' },
+    { name: 'Pita Pocket', price: '$3.00', id: '14N' },
+    { name: 'Lentil Soup', price: '$3.75', id: '15O' },
+    { name: 'Greek Salad', price: '$6.00', id: '16Q' },
+    { name: 'Rice Pilaf', price: '$4.00', id: '17R' },
+    { name: 'Baklava', price: '$3.00', id: '18S' },
+    { name: 'Tartufo', price: '$3.00', id: '19T' },
+    { name: 'Tiramisu', price: '$5.00', id: '20U' },
+    { name: 'Panna Cotta', price: '$5.00', id: '21V' },
 ];
 
-const Item = ({title})  => {
+const Item = ({name, price})  => {
     return (
     <View style={MenuItemStyle.innerContainer}> 
-        <Text style={MenuItemStyle.ItemText}>
-            {title}
-        </Text>
+        <Text style={MenuItemStyle.ItemText}>{name}</Text>
+        <Text style={MenuItemStyle.ItemText}>{price}</Text>
+        
     </View>
     )
 };
 
+const header = () => <Text style={MenuItemStyle.headText}>View Menu</Text>
+const Separator = () => <View style={MenuItemStyle.separator}/>
+
 function MenuItems() {
-    //const renderItem = ({item}) => {
-      //  <Item name={item.name} />
-    //}
+    const renderItem = ({item}) => {
+        <Item name={item.name}  price={item.price}/>
+    }
     
     return (
         
         <View style={MenuItemStyle.container}>
-                <Text style={MenuItemStyle.headText}>View Menu</Text>
+                
                 <FlatList 
                 data={ItemsToDisplay}
                 keyExtractor={item => item.id}
-                renderItem={({item}) => <Item title={item.title} />} /> 
+                renderItem={({item}) => <Item name={item.name} price={item.price} />}
+                ListHeaderComponent={header}
+                ItemSeparatorComponent={Separator} /> 
         </View>
     );
 };
@@ -61,17 +65,23 @@ const MenuItemStyle = StyleSheet.create({
         fontSize: 40,
         fontWeight: 'bold',
         flexWrap: 'wrap',
-        color: 'yellow',
+        color: '#F4CE14',
         textAlign: 'center'
     },
     innerContainer: {
         paddingHorizontal: 40,
         paddingVertical: 20,
-        backgroundColor: 'gray'
+        backgroundColor: 'gray',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     ItemText: {
-        fontSize: 30,
+        fontSize: 20,
         color: 'white'
+    },
+    separator: {
+        borderBottomWidth: 1,
+        backgroundColor: 'white'
     }
 
 });

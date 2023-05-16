@@ -11,11 +11,11 @@ export default function LemonFooter() {
 const FooterStyle = StyleSheet.create({
   container: {
     marginBottom: 10,
-    backgroundColor: 'black',
+    backgroundColor: 'gray',
     
   },
   headerText: {
-    color: 'yellow',
+    color: '#333333',
     textAlign: 'center',
     fontSize: 15,
   }
