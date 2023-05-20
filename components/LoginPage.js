@@ -1,9 +1,10 @@
 import React , {useState} from 'react';
-import {Text, ScrollView , TextInput , StyleSheet, KeyboardAvoidingView, Platform} from 'react-native';
+import {Text, ScrollView , TextInput , StyleSheet, KeyboardAvoidingView, Platform, Pressable} from 'react-native';
 
 function LoginPage() {
     const [Username , onChangeUsername] = useState('') ;
     const [password, onChangePassword] = useState('') ;
+    const [pressed, setPressed] = useState(false) ;
     return (
         <KeyboardAvoidingView style={loginPageStyle.container} 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -11,6 +12,11 @@ function LoginPage() {
             <Text style={loginPageStyle.headerText}>
                 Welcome to Little Lemon
             </Text>
+            {pressed && 
+                <Text style={loginPageStyle.regularText}>You are logged in</Text>
+            }
+            {!pressed && (
+                <>
             <Text style={loginPageStyle.regularText}>
                 Login to continue
             </Text>
@@ -27,7 +33,15 @@ function LoginPage() {
             minLength={8}
             keyboardType={'default'}
             style={loginPageStyle.inputText}
-            onChangeText={onChangePassword} />
+            onChangeText={onChangePassword} /> 
+            <Pressable 
+                onPress= {() => { setPressed(!pressed)} } 
+                >
+                <Text style={loginPageStyle.btnText}>Login</Text>
+            </Pressable>
+            </>
+            )}
+
         </ScrollView>
         </KeyboardAvoidingView>
     );
@@ -56,6 +70,19 @@ const loginPageStyle = StyleSheet.create ({
             margin: 15,
             backgroundColor: 'pink'
             
+        },
+        btnText: {
+            textAlign: 'center',
+            borderRadius: 70,
+            marginLeft: 125,
+            marginTop:20,
+            padding:10,
+            fontSize: 25,
+            width: 100,
+            backgroundColor: 'orange',
+            borderWidth: 1,
+
+
         }
 
     });
