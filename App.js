@@ -4,12 +4,14 @@ import LemonFooter from './components/LemonFooter';
 import WelcomeScreen from './components/WelcomeScreen';
 import MenuItems from './components/MenuItems';
 import FeedbackScreen from './components/feedbackScreen';
+import LoginPage from './components/LoginPage';
+
 export default function App() {
   return (<>
     <View style= {styles.container}>
       <StatusBar />
       <LemonHeader />
-      <WelcomeScreen />
+      <FeedbackScreen />
     </View>
     <View style={styles.footerStyle}>
       <LemonFooter/> 
