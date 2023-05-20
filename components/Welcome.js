@@ -1,14 +1,19 @@
 import React from 'react' ;
-import {Text , ScrollView , StyleSheet , Image} from 'react-native';
+import {Text , StyleSheet , Image, View, useColorScheme} from 'react-native';
 
 function Welcome () {
+    const colorScheme = useColorScheme() ;
     return (
-        <ScrollView style={styles.container}>
+            <View style={[styles.headerWrapper , 
+            colorScheme === 'light' ? 
+                {backgroundColor: 'white'} : 
+                {backgroundColor: 'gray'} 
+            ]}>
             <Image 
                 style={styles.logo} 
-                source={require('../img/littleLemonApp.png')}
+                source={require('../img/cutOrange.png')}
                 accessible={true}
-                resizeMode='contain'
+                resizeMode='center'
                 accessibilityLabel='LemonLogo'
              />
             <Text 
@@ -16,56 +21,25 @@ function Welcome () {
                 >
                 Little Lemon, your local Mediterranean Bistro
             </Text>
-            <Image 
-                style={styles.image} 
-                source={require('../img/picture1.png')}
-                accessible={true}
-                accessibilityLabel='NewsPaper'
-                resizeMode= 'contain'
-             />
-             <Image 
-                style={styles.image} 
-                source={require('../img/foodPicture.png')}
-                accessible={false}
-                accessibilityLabel='eat Meat'
-                resizeMode= 'cover'
-             />
-             <Image 
-                style={styles.image} 
-                source={require('../img/cutOrange.png')}
-                accessible={true}
-                accessibilityLabel='Cut orange'
-                resizeMode= 'stretch'
-             />
-             <Image 
-                style={styles.image} 
-                source={require('../img/picture4.png')}
-                accessible={false}
-                accessibilityLabel='picture 4'
-                resizeMode= 'center'
-             />
-        </ScrollView>
+            
+            </View>
     )
 }
 const styles=StyleSheet.create ({
-    container: {
+
+    headerWrapper: {
         flex: 1,
-        marginTop: 26,
-        backgroundColor: 'white',
-        padding: 20
+        padding: 24,
+        marginTop: 25,
     },
     text: {
-        fontSize:25,
-        color: 'orange',
-        margin: 20,
-    },
-    logo: {
-        height: 100,
-        width: 300
+        fontSize: 20,
+        color: '#EDEFEE',
+        textAlign: 'center',
     },
     image: {
-        height: 400,
-        width: 300
+        height: 100,
+        width: 300,
     }
 })
 export default Welcome;
