@@ -1,27 +1,32 @@
 import React from 'react' ;
-import {Text , StyleSheet , Image, View, useColorScheme} from 'react-native';
+import {
+    Text, 
+    StyleSheet,
+    Image, 
+    View, 
+    Pressable} from 'react-native';
 
-function Welcome () {
-    const colorScheme = useColorScheme() ;
+function Welcome ({navigation}) {
     return (
-            <View style={[styles.headerWrapper , 
-            colorScheme === 'light' ? 
-                {backgroundColor: 'white'} : 
-                {backgroundColor: 'gray'} 
-            ]}>
+            <View style={styles.headerWrapper }>
             <Image 
                 style={styles.logo} 
-                source={require('../img/cutOrange.png')}
+                source={require('../img/foodPicture.png')}
                 accessible={true}
-                resizeMode='center'
+                resizeMode='cover'
                 accessibilityLabel='LemonLogo'
              />
+
             <Text 
                 style={styles.text}
                 >
                 Little Lemon, your local Mediterranean Bistro
             </Text>
-            
+            <Pressable 
+            onPress={() => navigation.navigate('Menu')}>
+                <Text style={styles.text}>Menu View</Text>
+            </Pressable>
+
             </View>
     )
 }
@@ -29,17 +34,18 @@ const styles=StyleSheet.create ({
 
     headerWrapper: {
         flex: 1,
-        padding: 24,
+        padding: 30,
         marginTop: 25,
     },
     text: {
         fontSize: 20,
-        color: '#EDEFEE',
+        color: 'black',
         textAlign: 'center',
     },
     image: {
         height: 100,
         width: 300,
+
     }
 })
 export default Welcome;

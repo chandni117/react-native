@@ -49,7 +49,8 @@ function LoginPage() {
 
 const loginPageStyle = StyleSheet.create ({
         container: {
-            flex: 1     
+            flex: 1     ,
+            backgroundColor: '#333333'
         },
         headerText: {
             fontSize: 30,
@@ -68,7 +69,7 @@ const loginPageStyle = StyleSheet.create ({
             borderWidth: 1,
             padding: 12,
             margin: 15,
-            backgroundColor: 'pink'
+            backgroundColor: '#f0fff0'
             
         },
         btnText: {
@@ -79,7 +80,7 @@ const loginPageStyle = StyleSheet.create ({
             padding:10,
             fontSize: 25,
             width: 100,
-            backgroundColor: 'orange',
+            backgroundColor: 'gray',
             borderWidth: 1,
 
 
